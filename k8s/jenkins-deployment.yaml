@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: jenkins-deployment
+  namespace: jenkins-namespace
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: jenkins-app
+  template:
+    metadata:
+      labels:
+        app: jenkins-app
+    spec:
+      containers:
+      - name: jenkins-app
+        image: docker.io/magdy79/jenkins
+        resources:
+        securityContext:
+          allowPrivilegeEscalation: true
+          privileged: true
+          readOnlyRootFilesystem: false
+          runAsUser: 0
+        ports:
+         - name: http-port
+           containerPort: 8080
+        volumeMounts:
+         - name: pvc-demo-vol
+           mountPath: /var/jenkins_home   
+         - name: dockersock
+           mountPath: /var/run/docker.sock
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock
+      - name: test-volume
+        gcePersistentDisk:
+          pdName: my-data-disk
+          fsType: ext4
+      - name: pvc-demo-vol
+        persistentVolumeClaim:
+          claimName: pvc-demo
