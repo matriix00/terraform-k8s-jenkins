@@ -23,7 +23,7 @@ $ terraform apply -auto-approve
 - connect to management-vm
 ```gcloud compute ssh helper-vm ```
 
- - copy files into vm from bucket```gsutil cp -r k8s/ gs://iti-bucket3-gcp```
+ - copy files into vm from bucket```gsutil cp -r gs://iti-bucket3-gcp/k8s/ . ```
 - apply kubectl config 
 ```sudo apt-get install google-cloud-sdk-gke-gcloud-auth-plugin```
 ```&&```
