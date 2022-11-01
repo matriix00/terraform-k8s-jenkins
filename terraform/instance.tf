@@ -14,9 +14,9 @@ resource "google_compute_instance" "management_vm" {
     }
   }
   
-# sudo apt-get install google-cloud-sdk-gke-gcloud-auth-plugin && gcloud container clusters get-credentials cluster-lab --region europe-west1
 
-  metadata_startup_script = "${file("/home/dev97/GraduationProject/terraform/configurations/config.sh")}"
+
+  metadata_startup_script = "${file("/home/dev97/GraduationProject/infra/terraform/configurations/config.sh")}"
   
   network_interface {
     network = module.network.vpc_id

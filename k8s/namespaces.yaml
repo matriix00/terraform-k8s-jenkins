@@ -4,4 +4,10 @@ metadata:
   name: jenkins-namespace
 
 spec:
-  
+---
+apiVersion: v1
+kind: Namespace 
+metadata:
+  name: app-namespace
+
+spec:
