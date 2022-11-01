@@ -3,7 +3,7 @@
 
 ## Brief
 Provision GCP infrstructure using Terraform , Docker, Kubernetes,Jenkinns.
-![Image](task.png)
+![Image](aass.png)
 ## Cloning this project
 ```bash
 $ git clone https://github.com/matriix00/terraform-k8s-jenkins.git
